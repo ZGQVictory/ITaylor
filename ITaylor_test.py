@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # By default:
-# python ITaylor_test.py --seq_model_dir ./sequence_weight/neg_ratio_10 --surf_model_dir ./surface_weight/neg_ratio10 --test_dir ./data/Database_stage1/test_outputs --database_csv ./data/Database_stage1/09_FINAL_deduped_reindexed_cleaned.csv --mhc_pseudo ./data/Database_stage1/MHC_psuedo.dat --imfp_dir ./data/Database_stage2/imfp --output_dir ./predictions/ITaylor_test
+# python ITaylor_test.py --seq_model_dir ./sequence_weight/neg_ratio_10 --surf_model_dir ./surface_weight/neg_ratio_10 --test_dir ./data/Database_stage1/test_outputs --database_csv ./data/Database_stage1/09_FINAL_deduped_reindexed_cleaned.csv --mhc_pseudo ./data/Database_stage1/MHC_psuedo.dat --imfp_dir ./data/Database_stage2/imfp --output_dir ./predictions/ITaylor_test
 # Preflight only: python ITaylor_test.py --preflight-only
 
 """Standalone ITaylor test pipeline.
@@ -101,7 +101,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="ITaylor sequence/surface meta-fusion test")
     parser.add_argument("--seq_model_dir", default="sequence_weight/neg_ratio_10")
-    parser.add_argument("--surf_model_dir", default="surface_weight/neg_ratio10")
+    parser.add_argument("--surf_model_dir", default="surface_weight/neg_ratio_10")
     parser.add_argument("--test_dir", default="data/Database_stage1/test_outputs")
     parser.add_argument(
         "--database_csv",

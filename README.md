@@ -26,7 +26,7 @@ repository root while preserving the following paths:
 
 ```text
 sequence_weight/neg_ratio_10/fold_{0..4}/best_model.pt
-surface_weight/neg_ratio10/neg_ratio_10/fold_{0..4}/best_model.pt
+surface_weight/neg_ratio_10/neg_ratio_10/fold_{0..4}/best_model.pt
 data/Database_stage1/09_FINAL_deduped_reindexed_cleaned.csv
 data/Database_stage2/imfp/
 Adaptive_correction/fold_calibration_seqonly/fold_{0..4}_val_predictions.csv
@@ -97,7 +97,7 @@ python ITaylor_test.py --preflight-only
 
 python ITaylor_test.py \
   --seq_model_dir sequence_weight/neg_ratio_10 \
-  --surf_model_dir surface_weight/neg_ratio10 \
+  --surf_model_dir surface_weight/neg_ratio_10 \
   --test_dir data/Database_stage1/test_outputs \
   --database_csv data/Database_stage1/09_FINAL_deduped_reindexed_cleaned.csv \
   --mhc_pseudo data/Database_stage1/MHC_psuedo.dat \
@@ -184,13 +184,13 @@ python Train_stage2_surfonly_logging.py \
   --gpu 0 \
   --neg_ratio 10 \
   --max_epochs 30 \
-  --output_dir surface_weight/neg_ratio10
+  --output_dir surface_weight/neg_ratio_10
 ```
 
 Repeat the command for folds 1–4. Models are saved under:
 
 ```text
-surface_weight/neg_ratio10/neg_ratio_10/fold_<N>/
+surface_weight/neg_ratio_10/neg_ratio_10/fold_<N>/
 ```
 
 Use the configuration JSON stored with each released model for exact reproduction.
@@ -219,7 +219,7 @@ probability = predictor.predict_single(epitope, hla_sequence, tcra, tcrb)
 from predict_stage2_surfonly_logging import Stage2SurfOnlyPredictor
 
 predictor = Stage2SurfOnlyPredictor(
-    model_dir="surface_weight/neg_ratio10/neg_ratio_10",
+    model_dir="surface_weight/neg_ratio_10",
     imfp_dir="data/Database_stage2/imfp",
     device="cuda:0",
 )

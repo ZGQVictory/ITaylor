@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Example:
-# python ITaylor_predict.py --epitope TLMSAMTNL --hla_allele "HLA-A*02:01" --hla_sequence GSHSMRYFFTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDGETRKVKAHSQTHRVDLGTLRGYYNQSEAGSHTVQRMYGCDVGSDWRFLRGYHQYAYDGKDYIALKEDLRSWTAADMAAQTTKHKWEAAHVAEQLRAYLEGTCVEWLRRYLENGKETLQRTDAPKTHMTHHAVSDHEATLRCWALSFYPAEITLTWQRDGEDQTQDTELVETRPAGDGTFQKWAAVVVPSGQEQRYTCHVQHEGLPKPLTLRWEP  --tcra KEVEQNSGPLSVPEGAIASLNCTYSDRGSQSFFWYRQYSGKSPELIMFIYSNGDKEDGRFTAQLNKASQYVSLLIRDSQPSDSATYLCAVNNARLMFGDGTQLVVKP --tcrb GVTQTPKHLITATGQRVTLRCSPRSGDLSVYWYQQSLDQGLQFLIQYYNGEERAKGNILERFSAQQFPDLHSELNLSSLELGDSALYFCASSVAGSPEAFFGQGTRLTVV --cdr3a CAVNNARLMF  --cdr3b CASSVAGSPEAFF --pmhc_masif_dir ./example/9NMU_pHLA01/ --tcr_masif_dir ./example/9NMU_TCR01 --seq_model_dir ./sequence_weight/neg_ratio_10 --surf_model_dir ./surface_weight/neg_ratio10
+# python ITaylor_predict.py --epitope TLMSAMTNL --hla_allele "HLA-A*02:01" --hla_sequence GSHSMRYFFTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDGETRKVKAHSQTHRVDLGTLRGYYNQSEAGSHTVQRMYGCDVGSDWRFLRGYHQYAYDGKDYIALKEDLRSWTAADMAAQTTKHKWEAAHVAEQLRAYLEGTCVEWLRRYLENGKETLQRTDAPKTHMTHHAVSDHEATLRCWALSFYPAEITLTWQRDGEDQTQDTELVETRPAGDGTFQKWAAVVVPSGQEQRYTCHVQHEGLPKPLTLRWEP  --tcra KEVEQNSGPLSVPEGAIASLNCTYSDRGSQSFFWYRQYSGKSPELIMFIYSNGDKEDGRFTAQLNKASQYVSLLIRDSQPSDSATYLCAVNNARLMFGDGTQLVVKP --tcrb GVTQTPKHLITATGQRVTLRCSPRSGDLSVYWYQQSLDQGLQFLIQYYNGEERAKGNILERFSAQQFPDLHSELNLSSLELGDSALYFCASSVAGSPEAFFGQGTRLTVV --cdr3a CAVNNARLMF  --cdr3b CASSVAGSPEAFF --pmhc_masif_dir ./example/9NMU_pHLA01/ --tcr_masif_dir ./example/9NMU_TCR01 --seq_model_dir ./sequence_weight/neg_ratio_10 --neg_ratio_10 ./surface_weight/neg_ratio10
 """Predict one ITaylor_score from sequences and MaSIF features."""
 
 from __future__ import annotations
@@ -43,7 +43,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--tcr_masif_dir", required=True,
                         help="directory directly containing p2_*.npy files")
     parser.add_argument("--seq_model_dir", default="sequence_weight/neg_ratio_10")
-    parser.add_argument("--surf_model_dir", default="surface_weight/neg_ratio10")
+    parser.add_argument("--neg_ratio_10", default="surface_weight/neg_ratio10")
     parser.add_argument(
         "--database_csv",
         default="data/Database_stage1/09_FINAL_deduped_reindexed_cleaned.csv")
@@ -64,10 +64,10 @@ def build_parser() -> argparse.ArgumentParser:
 
 def normalize_args(args):
     for name in ("pmhc_masif_dir", "tcr_masif_dir", "seq_model_dir",
-                 "surf_model_dir", "database_csv"):
+                 "neg_ratio_10", "database_csv"):
         setattr(args, name, resolve_path(getattr(args, name)))
     args.seq_model_dir = core.resolve_model_dir(args.seq_model_dir)
-    args.surf_model_dir = core.resolve_model_dir(args.surf_model_dir)
+    args.neg_ratio_10 = core.resolve_model_dir(args.neg_ratio_10)
     return args
 
 
@@ -87,7 +87,7 @@ def preflight(args) -> list[str]:
             errors.append(f"Python package missing: {package} (import name: {module})")
 
     for label, model_dir in (("sequence", args.seq_model_dir),
-                             ("surface", args.surf_model_dir)):
+                             ("surface", args.neg_ratio_10)):
         for fold in range(5):
             path = model_dir / f"fold_{fold}" / "best_model.pt"
             if not path.is_file():
@@ -381,7 +381,7 @@ def run(args) -> float:
         esm_model_name=args.esm_model, logger=logger)
     logger.info("Loading surface ensemble")
     surface_predictor = Stage2SurfOnlyPredictor(
-        model_dir=str(args.surf_model_dir), imfp_dir=str(ROOT),
+        model_dir=str(args.neg_ratio_10), imfp_dir=str(ROOT),
         device=args.surf_device, logger=logger)
     sequence_logit = predict_sequence_logit(args, sequence_predictor)
     surface_logit = predict_surface_logit(args, surface_predictor)
