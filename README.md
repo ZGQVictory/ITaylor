@@ -134,6 +134,16 @@ only created when labels are present.
 
 Script: `Train_stage1_logging.py`
 
+First generate the positive-sequence ESM-C embeddings from
+`data/Database_stage1/outputs_split/training_positive.csv`:
+
+```bash
+python ESM-process.py
+```
+
+`ESM-process.py` uses fixed input/output paths and writes the filtered embeddings and
+metadata to `data/Database_stage1/esm-embedding/`.
+
 Required files:
 
 ```text
