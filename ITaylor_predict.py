@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Example:
 # python ITaylor_predict.py --epitope TLMSAMTNL --hla_allele "HLA-A*02:01" --hla_sequence GSHSMRYFFTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDGETRKVKAHSQTHRVDLGTLRGYYNQSEAGSHTVQRMYGCDVGSDWRFLRGYHQYAYDGKDYIALKEDLRSWTAADMAAQTTKHKWEAAHVAEQLRAYLEGTCVEWLRRYLENGKETLQRTDAPKTHMTHHAVSDHEATLRCWALSFYPAEITLTWQRDGEDQTQDTELVETRPAGDGTFQKWAAVVVPSGQEQRYTCHVQHEGLPKPLTLRWEP  --tcra KEVEQNSGPLSVPEGAIASLNCTYSDRGSQSFFWYRQYSGKSPELIMFIYSNGDKEDGRFTAQLNKASQYVSLLIRDSQPSDSATYLCAVNNARLMFGDGTQLVVKP --tcrb GVTQTPKHLITATGQRVTLRCSPRSGDLSVYWYQQSLDQGLQFLIQYYNGEERAKGNILERFSAQQFPDLHSELNLSSLELGDSALYFCASSVAGSPEAFFGQGTRLTVV --cdr3a CAVNNARLMF  --cdr3b CASSVAGSPEAFF --pmhc_masif_dir ./example/9NMU_pHLA01/ --tcr_masif_dir ./example/9NMU_TCR01 --seq_model_dir ./sequence_weight/neg_ratio_10 --surf_model_dir ./surface_weight/neg_ratio10
-"""Predict one ITayor_score from sequences and MaSIF features."""
+"""Predict one ITaylor_score from sequences and MaSIF features."""
 
 from __future__ import annotations
 
@@ -411,7 +411,7 @@ def main() -> int:
     except Exception as exc:
         print(f"ERROR: prediction failed: {exc}", file=sys.stderr)
         return 3
-    print(f"ITayor_score={probability:.8f}")
+    print(f"ITaylor_score={probability:.8f}")
     return 0
 
 

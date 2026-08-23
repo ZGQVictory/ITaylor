@@ -576,7 +576,7 @@ def process_file(path, args, logger, seq_predictor, surf_predictor):
     df = build_meta_features(df, args, logger)
     probability, fused_logit, gate, alpha = apply_learned_fusion(df, logger)
     df["g_star"], df["alpha_i"] = gate, alpha
-    df["fusion_logit"], df["ITayor_score"] = fused_logit, probability
+    df["fusion_logit"], df["ITaylor_score"] = fused_logit, probability
 
     similarity_columns = [column for column in FEATURE_COLS_N5 if column.startswith("sim_")]
     save_columns = [
@@ -585,7 +585,7 @@ def process_file(path, args, logger, seq_predictor, surf_predictor):
         "entropy_surf", "phla_dope_per_res", "tcr_lDDT", "tcr_pTM", "tcr_ipTM",
         *similarity_columns, "prob_diff", "entropy_diff", "prob_product_log",
         "logit_product", "signed_product_z", "g_star", "alpha_i",
-        "fusion_logit", "ITayor_score",
+        "fusion_logit", "ITaylor_score",
     ]
     if "label" in df.columns:
         save_columns.insert(2, "label")
@@ -598,7 +598,7 @@ def process_file(path, args, logger, seq_predictor, surf_predictor):
         labels = df["label"].values
         for name, scores in (("seq", sigmoid(df["sequence_logit"].values)),
                              ("surf", sigmoid(df["surface_logit"].values)),
-                             ("ITayor_score", probability)):
+                             ("ITaylor_score", probability)):
             metrics[name] = {
                 "auroc": float(roc_auc_score(labels, scores)),
                 "auprc": float(average_precision_score(labels, scores)),

@@ -24,6 +24,7 @@ runs/
 *.log
 *.tmp
 *.temp
+/test.py
 
 # Large pretrained weights and sequence-training tensors
 data/weights/
@@ -55,7 +56,10 @@ Adaptive_correction/fold_calibration_surfonly/*.gz
 Adaptive_correction/fold_calibration_surfonly/PANDORA_pdb_output/
 Adaptive_correction/fold_calibration_surfonly/tcr_only_tFold/
 Adaptive_correction/calibration_meta_data/meta_aggregated_dataset.csv
+Adaptive_correction/calibration_meta_data/meta_learning_data.csv
 Adaptive_correction/calibration_meta_data/meta_mlpalpha2_beta1_val_predictions.csv
+Adaptive_correction/*.tar
+Adaptive_correction/data/
 
 # Temporary Zenodo packaging/checksum outputs
 zenodo_staging/

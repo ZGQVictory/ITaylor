@@ -3,14 +3,8 @@
 ITaylor predicts pHLA–TCR recognition by combining paired sequence information with
 surface features derived independently from monomeric pHLA and TCR structures.
 
-> [!IMPORTANT]
-> **Information required from the maintainers before public release**
->
-> - Zenodo DOI and final archive names
-> - manuscript authors, journal/preprint link, and citation
-> - software license and redistribution terms for models/data
-> - project contact email
-> - tested GPU model, CUDA version, and approximate inference time
+> **Zenodo — Data and Model Assets:** [10.5281/zenodo.22063489](https://doi.org/10.5281/zenodo.22063489)  
+> **Zenodo — Complete Software and Data:** [10.5281/zenodo.22065527](https://doi.org/10.5281/zenodo.22065527)
 
 ## Installation
 
@@ -27,7 +21,7 @@ downloadable on first use.
 
 ## Download model and data files
 
-Large files are not stored in Git. Download the Zenodo bundle and extract it into the
+Large files are not stored in Git. Download the Zenodo archives and extract them into the
 repository root while preserving the following paths:
 
 ```text
@@ -72,7 +66,7 @@ validate the same command without loading the models, append:
 The program prints one score to standard output:
 
 ```text
-ITayor_score=0.12345678
+ITaylor_score=0.12345678
 ```
 
 ### Required surface files
@@ -130,7 +124,7 @@ ITaylor_test.log
 summary_metrics_N5.json
 ```
 
-The prediction CSV contains the final `ITayor_score` column. Metric JSON files are
+The prediction CSV contains the final `ITaylor_score` column. Metric JSON files are
 only created when labels are present.
 
 ## Training
@@ -231,7 +225,7 @@ predictor = Stage2SurfOnlyPredictor(
 probability = predictor.predict_single(pmhc_id, tcr_id)
 ```
 
-These branch probabilities are not the final `ITayor_score`; use
+These branch probabilities are not the final `ITaylor_score`; use
 `ITaylor_predict.py` or `ITaylor_test.py` for the complete pipeline.
 
 ## License

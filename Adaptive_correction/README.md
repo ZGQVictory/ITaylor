@@ -3,14 +3,6 @@
 This directory contains the scripts and trained assets used to fit ITaylor's XGBoost
 gate and AlphaNet correction model.
 
-> [!IMPORTANT]
-> **Information required from the maintainers for full end-to-end reproduction**
->
-> - provenance and Zenodo path for `meta_aggregated_dataset.csv`
-> - exact command/order used to create the intermediate `meta_learning_data.csv`
-> - hardware and runtime for feature construction and model training
-> - whether the saved validation prediction table will be publicly released
-
 ## Install the environment
 
 Run from the repository root:
