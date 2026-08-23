@@ -114,8 +114,9 @@ Each input CSV must contain:
 id,hla_allele,Epitope,hla_alpha123_mature,tcra_variable,tcrb_variable,id_tcr
 ```
 
-The optional `label` column enables AUROC and AUPRC calculation. Outputs are written
-to `--output_dir`:
+The optional `label` column enables AUROC and AUPRC calculation. By default,
+`ITaylor_test.py` writes all outputs to `predictions/ITaylor_test/`. Use
+`--output_dir` to select a different directory. The output files are:
 
 ```text
 ITaylor_test.log
