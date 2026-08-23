@@ -66,7 +66,7 @@ validate the same command without loading the models, append:
 The program prints one score to standard output:
 
 ```text
-ITaylor_score=0.12345678
+ITaylor_score=0.81703830
 ```
 
 ### Required surface files
