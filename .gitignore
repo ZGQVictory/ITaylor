@@ -1,0 +1,62 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+.env
+.env.*
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Runtime outputs
+predictions/
+runs/
+*.log
+*.tmp
+*.temp
+
+# Large pretrained weights and sequence-training tensors
+data/weights/
+Adaptive_correction/data/weights/
+data/Database_stage1/esm-embedding/*.pt
+
+# Research datasets distributed through Zenodo
+data/Database_stage1/09_FINAL_deduped_reindexed_cleaned.csv
+data/Database_stage1/outputs_split/
+data/Database_stage2/imfp/
+
+# Base-model binaries: keep configs and curves, archive weights separately
+sequence_weight/**/best_model.pt
+sequence_weight/**/checkpoint_epoch_*.pt
+sequence_weight/**/training_history.pt
+sequence_weight/**/fold_indices.pt
+surface_weight/**/best_model.pt
+surface_weight/**/checkpoint_epoch_*.pt
+surface_weight/**/training_history.pt
+surface_weight/**/fold_indices.pt
+
+# Adaptive-correction data products and structural archives
+Adaptive_correction/fold_calibration_seqonly/*.csv
+Adaptive_correction/fold_calibration_seqonly/*.npz
+Adaptive_correction/fold_calibration_surfonly/*.csv
+Adaptive_correction/fold_calibration_surfonly/*.npz
+Adaptive_correction/fold_calibration_surfonly/*.pdb
+Adaptive_correction/fold_calibration_surfonly/*.gz
+Adaptive_correction/fold_calibration_surfonly/PANDORA_pdb_output/
+Adaptive_correction/fold_calibration_surfonly/tcr_only_tFold/
+Adaptive_correction/calibration_meta_data/meta_aggregated_dataset.csv
+Adaptive_correction/calibration_meta_data/meta_mlpalpha2_beta1_val_predictions.csv
+
+# Temporary Zenodo packaging/checksum outputs
+zenodo_staging/
+SHA256SUMS

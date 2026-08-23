@@ -1,0 +1,2 @@
+method,best_beta,val_auc_fusion,val_auprc_fusion,val_auc_seq_cal,val_auc_surf_cal,g_star_mean,g_star_std,alpha_i_mean,alpha_i_std
+mlpalpha2_beta1,1.0,0.9935614380464161,0.9300644897833551,0.9738460071903339,0.7727733037574128,0.5108650922775269,0.1442779004573822,-5.900141716003418,6.890402793884277

@@ -1,0 +1,11 @@
+feature
+sim_tcrb_full_other_hla_max
+signed_product_z
+prob_diff
+sim_tcra_full_other_hla_max
+entropy_diff
+entropy_surf
+sim_epitope_other_hla_max
+sim_cdr3a_other_hla_max
+sim_epitope_same_hla_max
+phla_dope_per_res

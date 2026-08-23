@@ -1,0 +1,2 @@
+sim_tcrb_full_other_hla_max,signed_product_z,prob_diff,sim_tcra_full_other_hla_max,entropy_diff,entropy_surf,sim_epitope_other_hla_max,sim_cdr3a_other_hla_max,sim_epitope_same_hla_max,phla_dope_per_res
+0.999941,0.0008604676,-0.05012991,0.99994236,-0.17340586,0.31072918,0.5361171,0.99874717,0.7669303,0.00010046829
