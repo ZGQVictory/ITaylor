@@ -19,7 +19,6 @@ Thumbs.db
 desktop.ini
 
 # Runtime outputs
-predictions/
 runs/
 *.log
 *.tmp
